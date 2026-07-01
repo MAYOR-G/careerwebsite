@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { XCircle, ArrowRight, ChartBar, Users, Camera, Star, MonitorPlay, Crosshair, Target, Check, InstagramLogo, TiktokLogo, YoutubeLogo } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
@@ -13,19 +12,9 @@ const reviews = [
   { text: "The team is professional, fast, and the quality is absolutely top-tier.", name: "Amanda Smith", role: "VP Marketing, Stellar", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150" },
 ];
 
+const heroVideoUrl = 'https://pub-9f4f9c9b1b3e477aba4991ccfd92f1ae.r2.dev/202607011319%20(1).mp4';
+
 export default function HomePage() {
-  const [isAnnual, setIsAnnual] = useState(false);
-  const [bgIndex, setBgIndex] = useState(0);
-
-  const bgImages = ['/hero-bg.png', '/hero-bg-2.png', '/hero-bg-3.png'];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBgIndex((prev) => (prev + 1) % bgImages.length);
-    }, 5000); // Change image every 5 seconds
-    return () => clearInterval(interval);
-  }, []);
-
   const staggerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -43,18 +32,16 @@ export default function HomePage() {
         className="relative pt-32 pb-32 lg:pt-48 lg:pb-32 overflow-hidden flex items-center justify-center min-h-[90vh]"
       >
         <div className="absolute inset-0">
-          <AnimatePresence mode="wait">
-            <motion.img 
-              key={bgIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
-              src={bgImages[bgIndex]} 
-              alt="Content creation" 
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </AnimatePresence>
+          <video
+            src={heroVideoUrl}
+            className="absolute inset-0 w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label="ContentFlow social media content background video"
+          />
         </div>
         {/* Clear Overlay for visibility, no blur */}
         <div className="absolute inset-0 bg-white/20"></div>
@@ -123,7 +110,7 @@ export default function HomePage() {
       </section>
 
       {/* 3. PROBLEM SECTION */}
-      <section className="py-32 bg-white">
+      <section className="py-24 md:py-28 bg-white">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-sm font-bold text-[#00C2FF] tracking-[0.1em] uppercase mb-4">The Problem</h2>
@@ -155,7 +142,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. SOLUTION SECTION */}
-      <section className="py-32 bg-[#F8F9FC]">
+      <section className="py-24 md:py-28 bg-[#F8F9FC]">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-16 lg:gap-8">
             
@@ -185,7 +172,7 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="bg-white rounded-[24px] p-8 border border-[rgba(0,0,0,0.06)] hover:border-[#00C2FF] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,194,255,0.08)] transition-all duration-300"
+                  className={`bg-white rounded-[24px] p-8 border border-[rgba(0,0,0,0.06)] hover:border-[#00C2FF] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,194,255,0.08)] transition-all duration-300 ${i === 4 ? 'sm:col-span-2 sm:max-w-[calc(50%-0.75rem)] sm:mx-auto sm:w-full' : ''}`}
                 >
                   <div className="w-12 h-12 rounded-full bg-[#00C2FF]/10 text-[#00C2FF] flex items-center justify-center mb-6">
                     {feature.icon}
@@ -200,7 +187,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. PROCESS SECTION */}
-      <section id="process" className="py-32 bg-white">
+      <section id="process" className="py-24 md:py-28 bg-white">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-24">
             <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] tracking-tight mb-6">How It Works</h2>
@@ -221,7 +208,7 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="relative bg-white rounded-[24px] p-8 border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] overflow-hidden group hover:border-[#00C2FF]/30 transition-colors"
+                className="relative bg-white rounded-[24px] p-8 border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] overflow-hidden group hover:border-[#00C2FF]/30 transition-colors w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.35rem)] xl:w-[calc(20%-1.6rem)] min-h-[170px]"
               >
                 <div className="absolute -top-4 -right-4 text-[120px] font-black text-gray-100 opacity-50 group-hover:text-[#00C2FF]/5 transition-colors duration-500 select-none pointer-events-none">
                   {step.num}
@@ -236,21 +223,34 @@ export default function HomePage() {
       </section>
 
       {/* 6. EXPERTISE SECTION (Dark) */}
-      <section className="py-32 bg-[#4C1D95] relative overflow-hidden">
+      <section className="py-24 md:py-28 bg-[#4C1D95] relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00C2FF] rounded-full blur-[200px] opacity-[0.08] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(0,194,255,0.13),transparent_26%),radial-gradient(circle_at_92%_70%,rgba(255,255,255,0.08),transparent_24%)] pointer-events-none" />
         
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-            <div className="max-w-2xl">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">Services</h2>
-              <p className="text-lg text-gray-400">Everything you need to dominate social media, all in one place.</p>
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-14 items-end mb-14 md:mb-16">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-5">Services</h2>
+              <p className="text-lg text-white/68 leading-relaxed max-w-xl">Everything you need to dominate social media, all in one place.</p>
             </div>
-            <Link to="/services" className="text-white font-medium flex items-center hover:text-[#00C2FF] transition-colors group">
-              Explore All Services <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
+
+            <div className="relative">
+              <div className="relative aspect-[16/9] rounded-[28px] overflow-hidden border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.22)]">
+                <img
+                  src="/hero-bg.png"
+                  alt="Social media management dashboard and content planning session"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#4C1D95]/55 via-transparent to-[#00C2FF]/20" />
+              </div>
+              <div className="absolute -left-4 bottom-6 hidden sm:flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md px-4 py-3 text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
+                <MonitorPlay size={22} weight="duotone" className="text-[#00C2FF]" />
+                <span className="text-sm font-semibold">Daily creative workflow</span>
+              </div>
+            </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {[
               { title: 'Content Schedule', desc: 'Daily posting schedules optimized for algorithmic reach and engagement peaks.', icon: <ChartBar size={32} /> },
               { title: 'Digital Marketing', desc: 'Comprehensive strategies bridging organic reach with targeted paid campaigns.', icon: <Target size={32} /> },
@@ -262,42 +262,32 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="bg-transparent border border-white/10 rounded-[24px] p-10 hover:border-white/40 hover:bg-white/[0.03] transition-all duration-300"
+                className="bg-white/[0.045] border border-white/10 rounded-[24px] p-8 lg:p-10 min-h-[260px] flex flex-col hover:border-white/35 hover:bg-white/[0.075] hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="text-[#00C2FF] mb-8">{service.icon}</div>
                 <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{service.desc}</p>
+                <p className="text-white/64 leading-relaxed">{service.desc}</p>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-10 flex justify-center md:justify-end">
+            <Link to="/services" className="text-white font-medium flex items-center hover:text-[#00C2FF] transition-colors group">
+              Explore All Services <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* 7. PRICING SECTION */}
-      <section className="py-32 bg-white">
+      <section className="py-24 md:py-28 bg-white">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] tracking-tight mb-6">Pricing Packages</h2>
             <p className="text-lg text-gray-500 mb-10">Choose the growth tier that fits your brand's ambitions.</p>
-            
-            {/* Toggle */}
-            <div className="inline-flex items-center p-1 bg-gray-100 rounded-full">
-              <button 
-                onClick={() => setIsAnnual(false)}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${!isAnnual ? 'bg-white shadow-sm text-[#1A1A1A]' : 'text-gray-500 hover:text-[#1A1A1A]'}`}
-              >
-                Monthly
-              </button>
-              <button 
-                onClick={() => setIsAnnual(true)}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${isAnnual ? 'bg-white shadow-sm text-[#1A1A1A]' : 'text-gray-500 hover:text-[#1A1A1A]'}`}
-              >
-                Quarterly <span className="ml-1 text-[#00C2FF] text-xs">Save 10%</span>
-              </button>
-            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 items-stretch">
             {[
               { name: 'Starter Growth', price: 199, highlight: false, features: ['3 platforms', '8–12 posts/month', 'Caption + hashtag optimisation', 'Monthly content plan'] },
               { name: 'Growth Engine', price: 599, highlight: false, features: ['5 platforms', '20–25 posts/month', '8–12 short videos', 'Weekly content strategy', 'Profile optimisation'] },
@@ -310,7 +300,7 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`rounded-[24px] p-10 bg-white border transition-all duration-300 ${
+                className={`rounded-[24px] p-10 bg-white border transition-all duration-300 flex flex-col h-full ${
                   pkg.highlight 
                     ? 'border-[#00C2FF] shadow-[0_24px_48px_rgba(0,194,255,0.12)] lg:scale-105 z-10 relative' 
                     : 'border-gray-200 hover:border-gray-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)]'
@@ -322,12 +312,15 @@ export default function HomePage() {
                   </div>
                 )}
                 <h3 className={`font-semibold mb-4 text-sm uppercase tracking-wider ${pkg.highlight ? 'text-[#00C2FF]' : 'text-gray-500'}`}>{pkg.name}</h3>
-                <div className="flex items-end gap-1 mb-8">
-                  <span className="text-4xl font-bold text-[#1A1A1A]">£{isAnnual ? Math.floor(pkg.price * 0.9) : pkg.price}{pkg.name.includes('Elite') && '+'}</span>
+                <div className="flex items-end gap-1 mb-4">
+                  <span className="text-4xl font-bold text-[#1A1A1A]">£{pkg.price.toLocaleString('en-GB')}{pkg.name.includes('Elite') && '+'}</span>
                   <span className="text-gray-500 mb-1">/mo</span>
                 </div>
+                <p className="inline-flex w-fit rounded-full bg-[#00C2FF]/10 px-3 py-1 text-xs font-bold text-[#008FC0] mb-8">
+                  50% off for the first three months
+                </p>
                 
-                <ul className="space-y-4 mb-10">
+                <ul className="space-y-4 mb-10 flex-1">
                   {pkg.features.map((feat, j) => (
                     <li key={j} className="flex items-center gap-3">
                       <Check size={16} weight="bold" className="text-[#00C2FF]" />
@@ -336,7 +329,7 @@ export default function HomePage() {
                   ))}
                 </ul>
                 
-                <Link to="/contact">
+                <Link to="/contact" className="mt-auto">
                   <Button variant={pkg.highlight ? 'primary' : 'outline'} className="w-full">Get Started</Button>
                 </Link>
               </motion.div>
@@ -346,7 +339,7 @@ export default function HomePage() {
       </section>
 
       {/* 8. TESTIMONIALS SECTION */}
-      <section className="py-32 bg-[#F5F5F7] overflow-hidden relative">
+      <section className="py-24 md:py-28 bg-[#F5F5F7] overflow-hidden relative">
         {/* Decorative Quote Mark */}
         <div className="absolute top-10 left-10 text-[300px] font-serif text-gray-200 opacity-50 leading-none select-none pointer-events-none">"</div>
         

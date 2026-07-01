@@ -7,6 +7,7 @@ import Button from '../components/Button';
 const navLinks = [
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
+  { name: 'Pricing', path: '/pricing' },
   { name: 'Gallery', path: '/gallery' },
   { name: 'Blog', path: '/blog' },
 ];
@@ -28,18 +29,18 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-white/80 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.05)] py-4' 
-          : 'bg-transparent py-6'
+          ? 'bg-white/86 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.05)] py-2' 
+          : 'bg-white/10 backdrop-blur-[2px] py-2.5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex justify-between items-center min-h-[58px]">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 relative z-50">
-          <img src="/logo-transparent.png" alt="CONTENTFLOW MEDIA" className="h-28 md:h-40 w-auto object-contain scale-125 origin-left" />
+          <img src="/logo-transparent.png" alt="CONTENTFLOW MEDIA" className="h-12 sm:h-14 md:h-16 w-auto object-contain origin-left" />
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -66,6 +67,7 @@ export default function Header() {
         <button
           className="lg:hidden relative z-50 p-2 text-[#1A1A1A]"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
         >
           {mobileMenuOpen ? <X size={28} /> : <List size={28} />}
         </button>
@@ -119,4 +121,3 @@ export default function Header() {
     </header>
   );
 }
-

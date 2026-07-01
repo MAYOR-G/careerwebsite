@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Target, Lightbulb, Users, TrendUp } from '@phosphor-icons/react';
+import { InstagramLogo, Lightbulb, MonitorPlay, Target, TrendUp, Users, YoutubeLogo } from '@phosphor-icons/react';
 
 export default function AboutPage() {
   const fadeUpVariants = {
@@ -16,22 +16,59 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="w-full bg-white selection:bg-[#00C2FF] selection:text-white pt-32 pb-16">
+    <div className="w-full bg-white selection:bg-[#00C2FF] selection:text-white pt-24 md:pt-28 pb-16">
       {/* Hero Section */}
-      <section className="relative pt-20 pb-24 overflow-hidden border-b border-gray-100">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10 text-center">
+      <section className="relative pt-16 md:pt-20 pb-20 md:pb-24 overflow-hidden border-b border-gray-100">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(0,194,255,0.10),transparent_28%),radial-gradient(circle_at_88%_12%,rgba(76,29,149,0.10),transparent_26%)] pointer-events-none" />
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <motion.div 
             variants={staggerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-4xl mx-auto flex flex-col items-center"
+            className="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-center"
           >
-            <motion.h1 variants={fadeUpVariants} className="text-5xl md:text-7xl lg:text-[80px] font-extrabold tracking-[-0.04em] text-[#1A1A1A] leading-[1.05] mb-8">
-              We engineer <span className="relative inline-block text-[#00C2FF]">attention.<svg className="absolute w-full h-3 -bottom-1 left-0 text-[#00C2FF]/20" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" strokeLinecap="round"/></svg></span>
-            </motion.h1>
-            <motion.p variants={fadeUpVariants} className="text-xl md:text-2xl text-gray-600 leading-relaxed font-medium">
-              We're not just content creators. We are growth architects obsessed with turning views into verifiable revenue for modern brands.
-            </motion.p>
+            <div className="text-center lg:text-left">
+              <motion.h1 variants={fadeUpVariants} className="text-5xl md:text-7xl lg:text-[80px] font-extrabold tracking-[-0.04em] text-[#1A1A1A] leading-[1.05] mb-7 text-balance">
+                We engineer <span className="relative inline-block text-[#00C2FF]">attention.<svg className="absolute w-full h-3 -bottom-1 left-0 text-[#00C2FF]/20" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" strokeLinecap="round"/></svg></span>
+              </motion.h1>
+              <motion.p variants={fadeUpVariants} className="text-xl md:text-2xl text-gray-600 leading-relaxed font-medium max-w-2xl mx-auto lg:mx-0">
+                We're not just content creators. We are growth architects obsessed with turning views into verifiable revenue for modern brands.
+              </motion.p>
+            </div>
+
+            <motion.div variants={fadeUpVariants} className="relative max-w-2xl mx-auto lg:mx-0 w-full">
+              <div className="relative aspect-[16/11] rounded-[28px] overflow-hidden shadow-[0_28px_70px_rgba(76,29,149,0.16)] border border-white">
+                <img
+                  src="/hero-bg-3.png"
+                  alt="Social media strategy dashboard and content planning"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#4C1D95]/24 via-transparent to-[#00C2FF]/18" />
+              </div>
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                className="hidden sm:flex absolute -left-5 top-10 items-center gap-2 rounded-2xl bg-white/88 backdrop-blur-md border border-white/70 px-4 py-3 shadow-[0_18px_40px_rgba(0,0,0,0.10)]"
+              >
+                <InstagramLogo size={22} weight="fill" className="text-[#E1306C]" />
+                <span className="text-sm font-semibold text-[#1A1A1A]">Content queue</span>
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+                className="hidden sm:flex absolute -right-4 bottom-12 items-center gap-2 rounded-2xl bg-white/88 backdrop-blur-md border border-white/70 px-4 py-3 shadow-[0_18px_40px_rgba(0,0,0,0.10)]"
+              >
+                <YoutubeLogo size={22} weight="fill" className="text-[#FF0000]" />
+                <span className="text-sm font-semibold text-[#1A1A1A]">Short-form edits</span>
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
+                className="hidden md:flex absolute right-16 -top-5 w-14 h-14 rounded-2xl bg-[#1A1A1A] text-white items-center justify-center shadow-[0_18px_40px_rgba(0,0,0,0.16)]"
+              >
+                <MonitorPlay size={26} weight="duotone" />
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -49,8 +86,8 @@ export default function AboutPage() {
             >
               <div className="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-[0_32px_64px_rgba(0,0,0,0.08)] border border-gray-100">
                 <img 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop" 
-                  alt="Our Team" 
+                  src="/hero-bg-2.png" 
+                  alt="Video content production team in a studio" 
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>

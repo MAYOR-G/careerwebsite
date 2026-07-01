@@ -1,11 +1,48 @@
 import { Link } from 'react-router-dom';
 import { FacebookLogo, InstagramLogo, TwitterLogo, LinkedinLogo } from '@phosphor-icons/react';
 
+const footerColumns = [
+  {
+    title: 'COMPANY',
+    links: [
+      { label: 'About Us', to: '/about' },
+      { label: 'Our Work', to: '/gallery' },
+      { label: 'Pricing', to: '/pricing' },
+      { label: 'Contact', to: '/contact' },
+    ],
+  },
+  {
+    title: 'SERVICES',
+    links: [
+      { label: 'Social Media Management', to: '/services' },
+      { label: 'Short-Form Video', to: '/services' },
+      { label: 'Content Strategy', to: '/services' },
+      { label: 'Paid Advertising', to: '/services' },
+    ],
+  },
+  {
+    title: 'RESOURCES',
+    links: [
+      { label: 'Blog', to: '/blog' },
+      { label: 'Case Studies', to: '/gallery' },
+      { label: 'Help Center', to: '/contact' },
+    ],
+  },
+  {
+    title: 'LEGAL',
+    links: [
+      { label: 'Privacy Policy', to: '#' },
+      { label: 'Terms of Service', to: '#' },
+      { label: 'Cookie Policy', to: '#' },
+    ],
+  },
+];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#4C1D95] pt-16 pb-8 relative mt-12 md:mt-24">
+    <footer className="bg-[#4C1D95] pt-14 pb-8 relative mt-10 md:mt-18">
       {/* SVG Wave Divider at the top, pointing up */}
       <div className="absolute bottom-[calc(100%-1px)] left-0 w-full leading-none rotate-180 pointer-events-none">
         <svg className="relative block w-full h-[50px] md:h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -13,17 +50,17 @@ export default function Footer() {
         </svg>
       </div>
 
-      <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#00C2FF] rounded-full blur-[150px] opacity-20 pointer-events-none" />
+      <div className="absolute -top-44 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#00C2FF] rounded-full blur-[140px] opacity-16 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         
         {/* Top Section: Newsletter */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-16">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 mb-12">
           <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-5 text-balance">
               Stay ahead of the algorithm.
             </h2>
-            <p className="text-lg text-gray-400 mb-8 max-w-lg">
+            <p className="text-base md:text-lg text-white/68 mb-7 max-w-lg leading-relaxed">
               Get weekly insights on social media growth and conversion strategies delivered straight to your inbox.
             </p>
             <form className="relative max-w-md w-full">
@@ -40,53 +77,33 @@ export default function Footer() {
                 Subscribe
               </button>
             </form>
-            <p className="text-sm text-gray-500 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+            <p className="text-sm text-white/42 mt-4">We respect your privacy. Unsubscribe at any time.</p>
           </div>
         </div>
 
         {/* Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
-          <div>
-            <h4 className="font-semibold text-white mb-6 text-sm tracking-wide">COMPANY</h4>
-            <ul className="space-y-4">
-              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link to="/gallery" className="text-gray-400 hover:text-white transition-colors">Our Work</Link></li>
-              <li><Link to="/pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</Link></li>
-              <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold text-white mb-6 text-sm tracking-wide">SERVICES</h4>
-            <ul className="space-y-4">
-              <li><Link to="/services" className="text-gray-400 hover:text-white transition-colors">Social Media Management</Link></li>
-              <li><Link to="/services" className="text-gray-400 hover:text-white transition-colors">Short-Form Video</Link></li>
-              <li><Link to="/services" className="text-gray-400 hover:text-white transition-colors">Content Strategy</Link></li>
-              <li><Link to="/services" className="text-gray-400 hover:text-white transition-colors">Paid Advertising</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold text-white mb-6 text-sm tracking-wide">RESOURCES</h4>
-            <ul className="space-y-4">
-              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Blog</Link></li>
-              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Case Studies</Link></li>
-              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Help Center</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold text-white mb-6 text-sm tracking-wide">LEGAL</h4>
-            <ul className="space-y-4">
-              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</Link></li>
-              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</Link></li>
-            </ul>
-          </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 mb-12">
+          {footerColumns.map((column) => (
+            <div key={column.title}>
+              <h4 className="font-semibold text-white mb-5 text-xs tracking-[0.16em]">{column.title}</h4>
+              <ul className="space-y-3.5">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    <Link to={link.to} className="text-white/58 hover:text-white transition-colors text-sm md:text-base">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/10">
-          <div className="flex items-center gap-4">
-            <img src="/logo-transparent.png" alt="CONTENTFLOW MEDIA" className="h-16 md:h-24 w-auto object-contain scale-125 origin-left" />
-            <p className="text-sm text-gray-500">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-7 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row items-center md:items-start gap-3 sm:gap-5 text-center sm:text-left">
+            <img src="/logo-transparent.png" alt="CONTENTFLOW MEDIA" className="h-16 md:h-20 w-auto object-contain" />
+            <p className="text-sm text-white/44 sm:pt-7">
               &copy; {currentYear} ContentFlow. All rights reserved.
             </p>
           </div>
@@ -110,4 +127,3 @@ export default function Footer() {
     </footer>
   );
 }
-
