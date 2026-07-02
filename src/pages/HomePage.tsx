@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { XCircle, ArrowRight, ChartBar, Users, Camera, Star, MonitorPlay, Crosshair, Target, Check } from '@phosphor-icons/react';
+import { XCircle, ArrowRight, ChartBar, Camera, Star, MonitorPlay, Crosshair, Target, Check } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import { GalleryGrid } from './GalleryPage';
@@ -17,7 +17,37 @@ const trustedLogos = [
   { name: 'Luma Studio', className: 'font-bold italic tracking-[-0.04em]' },
   { name: 'Chevra', className: 'font-black tracking-[-0.05em]' },
   { name: 'At Home', className: 'font-semibold tracking-[-0.03em]' },
-  { name: 'Mackenzie', className: 'font-serif font-semibold tracking-[0.08em] uppercase' },
+];
+
+const solutionItems = [
+  {
+    title: 'Building a clear content strategy',
+    desc: 'We plan your content around your goals, audience, and brand so every post has purpose and direction.',
+    image: '/solution-content-strategy.png',
+    alt: 'Business team planning a clear social media content strategy',
+    label: 'Strategy',
+  },
+  {
+    title: 'Creating consistent, high-quality posts',
+    desc: 'We design and produce content that looks professional, stays on-brand, and keeps your audience engaged.',
+    image: '/solution-content-creation.png',
+    alt: 'Creative team producing high quality social media posts',
+    label: 'Creative',
+  },
+  {
+    title: 'Managing scheduling and posting',
+    desc: 'We handle the full posting process so your social media stays active, consistent, and stress-free.',
+    image: '/solution-scheduling.png',
+    alt: 'Social media manager scheduling posts on a content calendar dashboard',
+    label: 'Schedule',
+  },
+  {
+    title: 'Optimising for reach and engagement',
+    desc: 'We refine content and timing to help your posts reach more people and drive better interaction over time.',
+    image: '/solution-optimising.png',
+    alt: 'Business team reviewing reach and engagement analytics',
+    label: 'Growth',
+  },
 ];
 
 const reviews = [
@@ -32,10 +62,6 @@ const socialBadges = {
   problem: [
     { label: 'TikTok', className: 'right-5 top-5 rotate-3' },
     { label: 'IG', className: 'left-5 bottom-5 -rotate-3' },
-  ],
-  solution: [
-    { label: 'Pinterest', className: 'right-5 top-5 rotate-3' },
-    { label: 'YouTube', className: 'left-5 bottom-5 -rotate-3' },
   ],
   process: [
     { label: 'Plan', className: 'right-5 top-5 rotate-2' },
@@ -107,6 +133,9 @@ export default function HomePage() {
             animate="visible"
             className="w-full max-w-4xl flex flex-col items-center text-center"
           >
+            <motion.div variants={fadeUpVariants} className="logo-blend-text mb-5 text-sm font-extrabold tracking-[0.08em] drop-shadow-[0_3px_18px_rgba(0,0,0,0.42)] sm:text-base md:text-lg">
+              Uninterrupted 30 Days Of Social Media Schedule
+            </motion.div>
             <motion.h1 variants={fadeUpVariants} className="text-5xl md:text-7xl lg:text-[88px] font-extrabold tracking-[-0.04em] text-white leading-[1.05] mb-8 text-balance">
               Turn Social Media Content Into <span className="logo-blend-text">Paying Customers</span>
             </motion.h1>
@@ -217,51 +246,38 @@ export default function HomePage() {
       {/* 4. SOLUTION SECTION */}
       <section className="py-20 md:py-24 bg-[#F6F8FF]">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-[1.02fr_0.98fr] gap-10 lg:gap-14 items-center">
-            <div>
-              <h2 className="section-kicker mb-4 !text-sm md:!text-base">The Solution</h2>
-              <h3 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] tracking-tight mb-6 lg:leading-tight">Grow with better content.</h3>
-              <p className="text-lg text-gray-500 leading-relaxed mb-8">We build a clear system for planning, creating, posting, and improving your content.</p>
+          <div className="mb-12 max-w-3xl">
+            <h2 className="section-kicker mb-4 !text-sm md:!text-base">The Solution</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] tracking-tight mb-6 lg:leading-tight">Grow with better content.</h3>
+            <p className="text-lg text-gray-500 leading-relaxed">We build a clear system for planning, creating, posting, and improving your content.</p>
+          </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {[
-                  { title: 'Building a clear content strategy', desc: 'We plan your content around your goals, audience, and brand so every post has purpose and direction.', icon: <Target size={24} weight="fill" /> },
-                  { title: 'Creating consistent, high-quality posts', desc: 'We design and produce content that looks professional, stays on-brand, and keeps your audience engaged.', icon: <Camera size={24} weight="fill" /> },
-                  { title: 'Managing scheduling and posting', desc: 'We handle the full posting process so your social media stays active, consistent, and stress-free.', icon: <Users size={24} weight="fill" /> },
-                  { title: 'Optimising for reach and engagement', desc: 'We refine content and timing to help your posts reach more people and drive better interaction over time.', icon: <ChartBar size={24} weight="fill" /> }
-                ].map((feature, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.08, duration: 0.5 }}
-                    className="bg-white rounded-[24px] p-6 border border-[#E8ECFF] hover:border-[#A100FF]/35 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(58,0,255,0.08)] transition-all duration-300"
-                  >
-                    <div className="w-11 h-11 rounded-full bg-[#F0F3FF] text-[#3A00FF] flex items-center justify-center mb-4">
-                      {feature.icon}
-                    </div>
-                    <h4 className="text-base font-bold text-[#1A1A1A] mb-2 leading-snug">{feature.title}</h4>
-                    <p className="text-[15px] text-gray-600 leading-relaxed">{feature.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 28 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.65 }}
-              className="relative rounded-[30px] overflow-hidden bg-white shadow-[0_30px_80px_rgba(17,24,39,0.10)]"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=90&w=1400"
-                alt="Team planning social media content strategy"
-                className="h-[390px] w-full object-cover brightness-[1.06] saturate-[1.12] contrast-[1.04] sm:h-[480px] lg:h-[560px] xl:h-[590px]"
-              />
-              <FloatingImageBadges badges={socialBadges.solution} />
-            </motion.div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {solutionItems.map((feature, i) => (
+              <motion.article
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="group overflow-hidden rounded-[26px] border border-[#E8ECFF] bg-white shadow-[0_16px_44px_rgba(17,24,39,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-[#A100FF]/35 hover:shadow-[0_20px_50px_rgba(58,0,255,0.11)]"
+              >
+                <div className="relative h-56 overflow-hidden lg:h-60">
+                  <img
+                    src={feature.image}
+                    alt={feature.alt}
+                    className="h-full w-full object-cover brightness-[1.06] saturate-[1.12] contrast-[1.04] transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute left-4 top-4 rounded-full border border-white/70 bg-white/88 px-3 py-1.5 text-xs font-black text-[#111827] shadow-[0_12px_30px_rgba(58,0,255,0.12)] backdrop-blur-md">
+                    {feature.label}
+                  </span>
+                </div>
+                <div className="p-6 lg:p-7">
+                  <h4 className="mb-3 text-lg font-bold leading-snug text-[#1A1A1A]">{feature.title}</h4>
+                  <p className="text-[15px] leading-relaxed text-gray-600">{feature.desc}</p>
+                </div>
+              </motion.article>
+            ))}
           </div>
         </div>
       </section>
@@ -356,7 +372,7 @@ export default function HomePage() {
               className="relative rounded-[30px] overflow-hidden shadow-[0_30px_80px_rgba(17,24,39,0.10)]"
             >
               <img
-                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=90&w=1400"
+                src="/why-businesses-work.png"
                 alt="Creative team working together on a content strategy"
                 className="h-[500px] w-full object-cover brightness-[1.06] saturate-[1.1] contrast-[1.04]"
               />
@@ -442,10 +458,10 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 items-stretch">
             {[
-              { name: 'Starter Growth', price: 199, highlight: false, features: ['3 platforms', '8–12 posts/month', 'Caption + hashtag optimisation', 'Monthly content plan'] },
-              { name: 'Growth Engine', price: 599, highlight: false, features: ['5 platforms', '20–25 posts/month', '8–12 short videos', 'Weekly content strategy', 'Profile optimisation'] },
-              { name: 'Sales Accelerator', price: 1499, highlight: true, features: ['All 6 platforms', 'Daily posting', '30–45 content pieces/month', 'Viral content strategy', 'Funnel integration', 'Lead conversion scripts'] },
-              { name: 'Elite Growth System', price: 3000, highlight: false, features: ['Full content + funnel system', 'Daily high-volume posting', 'Trend-based viral content', 'Dedicated strategist', 'Conversion optimisation', 'Priority support'] }
+              { name: 'Starter Growth', price: '$299', highlight: false, features: ['3 platforms', '8–12 posts/month', 'Caption + hashtag optimisation', 'Monthly content plan'] },
+              { name: 'Growth Engine', price: '$999', highlight: false, features: ['5 platforms', '20–25 posts/month', '8–12 short videos', 'Weekly content strategy', 'Profile optimisation'] },
+              { name: 'Sales Accelerator', price: '$399', highlight: true, features: ['All 6 platforms', 'Daily posting', '30–45 content pieces/month', 'Viral content strategy', 'Funnel integration', 'Lead conversion scripts'] },
+              { name: 'Elite Growth System', price: '$6,000+', highlight: false, features: ['Full content + funnel system', 'Daily high-volume posting', 'Trend-based viral content', 'Dedicated strategist', 'Conversion optimisation', 'Priority support'] }
             ].map((pkg, i) => (
               <motion.div 
                 key={i} 
@@ -466,7 +482,7 @@ export default function HomePage() {
                 )}
                 <h3 className={`font-semibold mb-4 text-sm uppercase tracking-wider ${pkg.highlight ? 'logo-blend-text' : 'text-gray-500'}`}>{pkg.name}</h3>
                 <div className="flex items-end gap-1 mb-4">
-                  <span className="text-4xl font-bold text-[#1A1A1A]">£{pkg.price.toLocaleString('en-GB')}{pkg.name.includes('Elite') && '+'}</span>
+                  <span className="text-4xl font-bold text-[#1A1A1A]">{pkg.price}</span>
                   <span className="text-gray-500 mb-1">/mo</span>
                 </div>
                 <p className="inline-flex w-fit rounded-full bg-[#A100FF]/10 px-3 py-1 text-xs font-bold text-[#3A00FF] mb-8">

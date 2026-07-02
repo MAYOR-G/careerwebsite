@@ -7,7 +7,7 @@ export default function PricingPage() {
   const plans = [
     {
       name: 'Starter Growth',
-      price: '£199',
+      price: '$299',
       period: '/month',
       features: [
         '3 platforms',
@@ -19,7 +19,7 @@ export default function PricingPage() {
     },
     {
       name: 'Growth Engine',
-      price: '£599',
+      price: '$999',
       period: '/month',
       features: [
         '5 platforms',
@@ -32,7 +32,7 @@ export default function PricingPage() {
     },
     {
       name: 'Sales Accelerator',
-      price: '£1,499',
+      price: '$399',
       period: '/month',
       features: [
         'All 6 platforms',
@@ -46,7 +46,7 @@ export default function PricingPage() {
     },
     {
       name: 'Elite Growth System',
-      price: '£3,000+',
+      price: '$6,000+',
       period: '/month',
       features: [
         'Full content + funnel system',
