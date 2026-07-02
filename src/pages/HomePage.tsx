@@ -4,9 +4,21 @@ import { XCircle, ArrowRight, ChartBar, Users, Camera, Star, MonitorPlay, Crossh
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import { GalleryGrid } from './GalleryPage';
-import heroStripVideo from '../../hero video.webm';
 
 const heroVideoUrl = 'https://pub-9f4f9c9b1b3e477aba4991ccfd92f1ae.r2.dev/content%20flow.mp4';
+
+const trustedLogos = [
+  { name: 'Northline', className: 'font-black italic tracking-[-0.06em]' },
+  { name: 'Wayfind', className: 'font-extrabold tracking-[-0.05em]' },
+  { name: 'Southpeak', className: 'font-black tracking-[-0.06em]' },
+  { name: 'Union&Co', className: 'font-serif font-bold italic tracking-[-0.03em]' },
+  { name: 'Crescent', className: 'font-black tracking-[-0.05em]' },
+  { name: 'KiwiHaus', className: 'font-serif font-black tracking-[-0.04em]' },
+  { name: 'Luma Studio', className: 'font-bold italic tracking-[-0.04em]' },
+  { name: 'Chevra', className: 'font-black tracking-[-0.05em]' },
+  { name: 'At Home', className: 'font-semibold tracking-[-0.03em]' },
+  { name: 'Mackenzie', className: 'font-serif font-semibold tracking-[0.08em] uppercase' },
+];
 
 const reviews = [
   { text: "ContentFlow doubled our engagement in the first 30 days. Unbelievable results.", name: "Sarah Jenkins", role: "CMO, TechNova", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150" },
@@ -15,6 +27,46 @@ const reviews = [
   { text: "Best ROI we've seen from any marketing channel this year. Highly recommended.", name: "David Chen", role: "Director, Apex Solutions", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150" },
   { text: "The team is professional, fast, and the quality is absolutely top-tier.", name: "Amanda Smith", role: "VP Marketing, Stellar", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150" },
 ];
+
+const socialBadges = {
+  problem: [
+    { label: 'TikTok', className: 'right-5 top-5 rotate-3' },
+    { label: 'IG', className: 'left-5 bottom-5 -rotate-3' },
+  ],
+  solution: [
+    { label: 'Pinterest', className: 'right-5 top-5 rotate-3' },
+    { label: 'YouTube', className: 'left-5 bottom-5 -rotate-3' },
+  ],
+  process: [
+    { label: 'Plan', className: 'right-5 top-5 rotate-2' },
+    { label: 'Post', className: 'left-5 bottom-5 -rotate-2' },
+  ],
+  why: [
+    { label: 'Strategy', className: 'right-5 top-5 rotate-2' },
+    { label: 'Growth', className: 'left-5 bottom-5 -rotate-2' },
+  ],
+  services: [
+    { label: 'TikTok', className: 'right-5 top-5 rotate-3' },
+    { label: 'Instagram', className: 'left-5 bottom-5 -rotate-3' },
+  ],
+};
+
+function FloatingImageBadges({ badges }: { badges: Array<{ label: string; className: string }> }) {
+  return (
+    <div className="pointer-events-none absolute inset-0 z-10 hidden sm:block">
+      {badges.map((badge, index) => (
+        <motion.span
+          key={badge.label}
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 4 + index * 0.45, repeat: Infinity, ease: 'easeInOut' }}
+          className={`absolute rounded-2xl border border-white/60 bg-white/86 px-4 py-2 text-xs font-black text-[#111827] shadow-[0_18px_42px_rgba(58,0,255,0.18)] backdrop-blur-md ${badge.className}`}
+        >
+          {badge.label}
+        </motion.span>
+      ))}
+    </div>
+  );
+}
 
 export default function HomePage() {
   const staggerVariants: Variants = {
@@ -60,7 +112,7 @@ export default function HomePage() {
             </motion.h1>
             
             <motion.p variants={fadeUpVariants} className="text-xl md:text-2xl text-white/88 font-medium mb-10 max-w-2xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
-              We manage TikTok, Instagram, Facebook, YouTube, X, and Pinterest with high-performing content designed for growth and conversions.
+              We run your presence across TikTok, Instagram, Facebook, YouTube, X, and Pinterest with strategic, high-performing content that turns visibility into real business growth.
             </motion.p>
             
             <motion.div variants={fadeUpVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-9 w-full max-w-md mx-auto sm:max-w-none">
@@ -88,51 +140,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. SOCIAL MEDIA VIDEO STRIP */}
-      <section className="relative overflow-hidden bg-white py-2 md:py-3">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white to-transparent" />
-        <video
-          src={heroStripVideo}
-          className="mx-auto h-[clamp(92px,12vw,155px)] w-full max-w-[1600px] object-cover object-center mix-blend-multiply"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-label="Animated social media platform cards"
-          style={{
-            WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)',
-            maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)',
-          }}
-        />
+      {/* 2. TRUSTED BY STRIP */}
+      <section className="relative overflow-hidden bg-white pt-8 pb-9 md:pt-9 md:pb-10">
+        <div className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:repeating-radial-gradient(ellipse_at_center,rgba(58,0,255,0.08)_0,rgba(58,0,255,0.08)_1px,transparent_2px,transparent_16px)]" />
+        <div className="relative z-10 mb-7 text-center">
+          <h2 className="text-lg font-extrabold tracking-[-0.02em] text-[#111827] md:text-xl">
+            Trusted by growing brands
+          </h2>
+        </div>
+        <div className="relative z-10 w-full overflow-hidden">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent md:w-28" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent md:w-28" />
+          <div className="flex w-max animate-marquee-left items-center gap-10 md:gap-16">
+            {[...trustedLogos, ...trustedLogos].map((logo, index) => (
+              <span
+                key={`${logo.name}-${index}`}
+                className={`shrink-0 text-2xl leading-none text-[#1A1A1A]/72 grayscale md:text-4xl ${logo.className}`}
+              >
+                {logo.name}
+              </span>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* 3. PROBLEM SECTION */}
       <section className="py-20 md:py-24 bg-white">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-[1.04fr_0.96fr] gap-10 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-[0.86fr_1.14fr] gap-10 lg:gap-16 items-start">
             <div>
-              <h2 className="section-kicker mb-4">The Problem</h2>
+              <h2 className="section-kicker mb-4 !text-sm md:!text-base">The Problem</h2>
               <h3 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] tracking-tight mb-8 text-balance">Most businesses struggle with content.</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {[
-                  { title: "Posting is not consistent", desc: "Some weeks are active. Other weeks go quiet.", icon: <XCircle size={30} weight="duotone" /> },
+                  { title: "Posting inconsistently", desc: "Your audience does not hear from you often enough.", icon: <XCircle size={30} weight="duotone" /> },
                   { title: "Low engagement", desc: "People see the content but do not respond.", icon: <MonitorPlay size={30} weight="duotone" /> },
-                  { title: "No leads from social media", desc: "Views are not turning into real enquiries.", icon: <ChartBar size={30} weight="duotone" /> },
-                  { title: "No clear plan", desc: "Random posts make it hard to grow.", icon: <Crosshair size={30} weight="duotone" /> }
+                  { title: "No clear content strategy", desc: "Posts go out without a clear direction.", icon: <Crosshair size={30} weight="duotone" /> },
+                  { title: "Wasting time with no results", desc: "Too much effort goes in with little return.", icon: <ChartBar size={30} weight="duotone" /> }
                 ].map((item, i) => (
-                  <motion.div 
+                  <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.08, duration: 0.55 }}
-                    className="bg-[#F6F8FF] rounded-[22px] p-6 border border-[#E8ECFF] shadow-[0_16px_42px_rgba(17,24,39,0.04)] flex flex-col items-start"
+                    className="bg-[#F6F8FF] rounded-[22px] p-5 border border-[#E8ECFF] shadow-[0_16px_42px_rgba(17,24,39,0.04)] flex flex-col items-start"
                   >
-                    <div className="mb-5 text-[#3A00FF]">{item.icon}</div>
+                    <div className="mb-4 text-[#3A00FF]">{item.icon}</div>
                     <h4 className="text-lg font-bold text-[#1A1A1A] mb-2">{item.title}</h4>
-                    <p className="text-gray-600 leading-relaxed text-sm mt-auto">{item.desc}</p>
+                    <p className="text-[15px] text-gray-600 leading-relaxed mt-auto">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
@@ -143,18 +199,15 @@ export default function HomePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="relative"
+              className="relative lg:pt-12"
             >
-              <div className="relative aspect-[4/5] sm:aspect-[16/12] lg:aspect-[5/6] rounded-[30px] overflow-hidden shadow-[0_32px_80px_rgba(58,0,255,0.14)]">
+              <div className="relative h-[330px] overflow-hidden rounded-[30px] shadow-[0_32px_80px_rgba(58,0,255,0.14)] sm:h-[380px] lg:h-[560px] xl:h-[580px]">
                 <img
                   src="/problem-social-media-struggle.png"
                   alt="Business owner reviewing difficult social media performance on a laptop"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-[center_42%] brightness-[1.06] saturate-[1.12] contrast-[1.04]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#070817]/44 via-transparent to-[#FF00D4]/18" />
-              </div>
-              <div className="absolute -bottom-5 left-6 right-6 rounded-2xl border border-white/30 bg-white/88 backdrop-blur-md px-5 py-4 shadow-[0_20px_50px_rgba(17,24,39,0.12)]">
-                <p className="text-sm font-semibold text-[#111827]">A better plan makes content easier to manage.</p>
+                <FloatingImageBadges badges={socialBadges.problem} />
               </div>
             </motion.div>
           </div>
@@ -164,43 +217,51 @@ export default function HomePage() {
       {/* 4. SOLUTION SECTION */}
       <section className="py-20 md:py-24 bg-[#F6F8FF]">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-8">
-            
-            <div className="w-full lg:w-[40%] flex flex-col justify-center">
-              <h2 className="section-kicker mb-4">The Solution</h2>
+          <div className="grid lg:grid-cols-[1.02fr_0.98fr] gap-10 lg:gap-14 items-center">
+            <div>
+              <h2 className="section-kicker mb-4 !text-sm md:!text-base">The Solution</h2>
               <h3 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] tracking-tight mb-6 lg:leading-tight">Grow with better content.</h3>
-              <p className="text-lg text-gray-500 leading-relaxed mb-8">We help you plan, create, post, and improve content so your social pages can bring in more customers.</p>
-              
-              <div className="bg-white rounded-[24px] p-8 border border-[#E8ECFF] shadow-[0_18px_50px_rgba(58,0,255,0.06)] mt-auto mb-8 lg:mb-0">
-                <div className="text-3xl font-black logo-blend-text tracking-tight mb-2">Plan. Create. Post.</div>
-                <div className="text-gray-500 font-medium">Simple steps for better social media content.</div>
+              <p className="text-lg text-gray-500 leading-relaxed mb-8">We build a clear system for planning, creating, posting, and improving your content.</p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {[
+                  { title: 'Building a clear content strategy', desc: 'We plan your content around your goals, audience, and brand so every post has purpose and direction.', icon: <Target size={24} weight="fill" /> },
+                  { title: 'Creating consistent, high-quality posts', desc: 'We design and produce content that looks professional, stays on-brand, and keeps your audience engaged.', icon: <Camera size={24} weight="fill" /> },
+                  { title: 'Managing scheduling and posting', desc: 'We handle the full posting process so your social media stays active, consistent, and stress-free.', icon: <Users size={24} weight="fill" /> },
+                  { title: 'Optimising for reach and engagement', desc: 'We refine content and timing to help your posts reach more people and drive better interaction over time.', icon: <ChartBar size={24} weight="fill" /> }
+                ].map((feature, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08, duration: 0.5 }}
+                    className="bg-white rounded-[24px] p-6 border border-[#E8ECFF] hover:border-[#A100FF]/35 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(58,0,255,0.08)] transition-all duration-300"
+                  >
+                    <div className="w-11 h-11 rounded-full bg-[#F0F3FF] text-[#3A00FF] flex items-center justify-center mb-4">
+                      {feature.icon}
+                    </div>
+                    <h4 className="text-base font-bold text-[#1A1A1A] mb-2 leading-snug">{feature.title}</h4>
+                    <p className="text-[15px] text-gray-600 leading-relaxed">{feature.desc}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
 
-            <div className="w-full lg:w-[60%] grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                { title: 'Short videos', icon: <MonitorPlay size={24} weight="fill" /> },
-                { title: 'Content planning', icon: <Target size={24} weight="fill" /> },
-                { title: 'Post on every platform', icon: <Users size={24} weight="fill" /> },
-                { title: 'Get more engagement', icon: <Star size={24} weight="fill" /> },
-                { title: 'Turn views into leads', icon: <ChartBar size={24} weight="fill" /> }
-              ].map((feature, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className={`bg-white rounded-[24px] p-8 border border-[#E8ECFF] hover:border-[#A100FF]/35 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(58,0,255,0.08)] transition-all duration-300 ${i === 4 ? 'sm:col-span-2 sm:max-w-[calc(50%-0.75rem)] sm:mx-auto sm:w-full' : ''}`}
-                >
-                  <div className="w-12 h-12 rounded-full bg-[#F0F3FF] text-[#3A00FF] flex items-center justify-center mb-6">
-                    {feature.icon}
-                  </div>
-                  <h4 className="text-lg font-bold text-[#1A1A1A] mb-3">{feature.title}</h4>
-                </motion.div>
-              ))}
-            </div>
-
+            <motion.div
+              initial={{ opacity: 0, x: 28 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.65 }}
+              className="relative rounded-[30px] overflow-hidden bg-white shadow-[0_30px_80px_rgba(17,24,39,0.10)]"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=90&w=1400"
+                alt="Team planning social media content strategy"
+                className="h-[390px] w-full object-cover brightness-[1.06] saturate-[1.12] contrast-[1.04] sm:h-[480px] lg:h-[560px] xl:h-[590px]"
+              />
+              <FloatingImageBadges badges={socialBadges.solution} />
+            </motion.div>
           </div>
         </div>
       </section>
@@ -210,10 +271,10 @@ export default function HomePage() {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] tracking-tight mb-6">How It Works</h2>
-            <p className="text-lg text-gray-500">We use a simple process to plan, create, post, and improve your content.</p>
+            <p className="text-lg text-gray-500">A simple process for steady, professional content.</p>
           </div>
 
-          <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
+          <div className="grid lg:grid-cols-[0.98fr_1.02fr] gap-10 lg:gap-14 items-center">
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -222,20 +283,18 @@ export default function HomePage() {
               className="relative rounded-[30px] overflow-hidden shadow-[0_30px_80px_rgba(17,24,39,0.10)]"
             >
               <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=85&w=1400"
-                alt="Team planning a social media content workflow"
-                className="h-[520px] w-full object-cover"
+                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=90&w=1400"
+                alt="Team mapping a social media content plan"
+                className="h-[500px] w-full object-cover brightness-[1.06] saturate-[1.1] contrast-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#070817]/56 via-transparent to-[#00D2FF]/18" />
+              <FloatingImageBadges badges={socialBadges.process} />
             </motion.div>
 
-            <div className="space-y-4">
+            <div className="space-y-5">
               {[
-                { num: '01', title: 'We learn your business' },
-                { num: '02', title: 'We make a content plan' },
-                { num: '03', title: 'We create and post content' },
-                { num: '04', title: 'We improve what works' },
-                { num: '05', title: 'You get more leads' }
+                { num: '01', title: 'We understand your business', desc: 'We learn your audience, goals, and brand voice' },
+                { num: '02', title: 'We build your content strategy', desc: 'We design a posting plan tailored to your niche' },
+                { num: '03', title: 'We manage everything', desc: 'We create, schedule, and optimise your content' }
               ].map((step, i) => (
                 <motion.div 
                   key={i}
@@ -248,7 +307,10 @@ export default function HomePage() {
                   <div className="logo-blend-bg flex h-14 w-14 items-center justify-center rounded-2xl text-sm font-black text-white">
                     {step.num}
                   </div>
-                  <h3 className="text-lg md:text-xl font-bold text-[#1A1A1A]">{step.title}</h3>
+                  <div>
+                    <h3 className="text-lg md:text-xl font-bold text-[#1A1A1A]">{step.title}</h3>
+                    <p className="mt-1 text-[15px] text-gray-500">{step.desc}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -256,15 +318,61 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. EXPERTISE SECTION (Dark) */}
-      <section className="py-20 md:py-24 bg-[#070817] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(0,210,255,0.18),transparent_28%),radial-gradient(circle_at_88%_28%,rgba(255,0,212,0.16),transparent_30%),radial-gradient(circle_at_55%_100%,rgba(58,0,255,0.18),transparent_34%)] pointer-events-none" />
-        
+      {/* 6. WHY SECTION */}
+      <section className="py-20 md:py-24 bg-[#F6F8FF]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] tracking-tight mb-8">Why businesses work with us</h2>
+              <div className="space-y-4">
+                {[
+                  'We focus on consistency, not random posting',
+                  'Every post is tied to a strategy, not guesswork',
+                  'We optimise content for engagement + growth',
+                  'We act like your in-house social media team'
+                ].map((item, i) => (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08, duration: 0.45 }}
+                    className="flex items-start gap-4 rounded-[22px] border border-[#E8ECFF] bg-white p-5 shadow-[0_14px_40px_rgba(17,24,39,0.04)]"
+                  >
+                    <span className="logo-blend-bg mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white">
+                      <Check size={14} weight="bold" />
+                    </span>
+                    <p className="font-semibold text-[#1A1A1A]">{item}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 28 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.65 }}
+              className="relative rounded-[30px] overflow-hidden shadow-[0_30px_80px_rgba(17,24,39,0.10)]"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=90&w=1400"
+                alt="Creative team working together on a content strategy"
+                className="h-[500px] w-full object-cover brightness-[1.06] saturate-[1.1] contrast-[1.04]"
+              />
+              <FloatingImageBadges badges={socialBadges.why} />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. EXPERTISE SECTION */}
+      <section className="py-20 md:py-24 bg-white relative overflow-hidden">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-[1.02fr_0.98fr] gap-10 lg:gap-14 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-5">Services</h2>
-              <p className="text-lg text-white/68 leading-relaxed max-w-xl mb-8">Content planning, social media management, video editing, and digital marketing in one place.</p>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-[#1A1A1A] mb-5">Services</h2>
+              <p className="text-lg text-gray-500 leading-relaxed max-w-xl mb-8">Content planning, social media management, video editing, and digital marketing in one place.</p>
 
               <div className="grid sm:grid-cols-3 lg:grid-cols-1 gap-5">
                 {[
@@ -278,34 +386,30 @@ export default function HomePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.08, duration: 0.5 }}
-                    className="bg-white/[0.055] border border-white/10 rounded-[22px] p-6 flex flex-col hover:border-white/35 hover:bg-white/[0.085] transition-all duration-300"
+                    className="bg-[#F6F8FF] border border-[#E8ECFF] rounded-[22px] p-6 flex flex-col shadow-[0_14px_40px_rgba(17,24,39,0.04)] hover:border-[#A100FF]/35 hover:-translate-y-1 transition-all duration-300"
                   >
                     <div className="text-[#00D2FF] mb-4">{service.icon}</div>
-                    <h3 className="text-lg font-bold text-white mb-2">{service.title}</h3>
-                    <p className="text-sm text-white/64 leading-relaxed">{service.desc}</p>
+                    <h3 className="text-lg font-bold text-[#1A1A1A] mb-2">{service.title}</h3>
+                    <p className="text-[15px] text-gray-600 leading-relaxed">{service.desc}</p>
                   </motion.div>
                 ))}
               </div>
 
               <div className="mt-8 flex justify-start">
-                <Link to="/services" className="text-white font-medium flex items-center hover:text-[#00D2FF] transition-colors group">
+                <Link to="/services" className="text-[#3A00FF] font-medium flex items-center hover:text-[#A100FF] transition-colors group">
                   Explore All Services <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
 
             <div className="relative">
-              <div className="relative aspect-[5/4] rounded-[28px] overflow-hidden border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.22)]">
+              <div className="relative h-[340px] overflow-hidden rounded-[28px] border border-white shadow-[0_30px_80px_rgba(17,24,39,0.10)] sm:h-[470px] lg:h-[560px] xl:h-[600px]">
                 <img
                   src="/hero-bg.png"
                   alt="Social media management dashboard and content planning session"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover brightness-[1.06] saturate-[1.12] contrast-[1.04]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#3A00FF]/46 via-transparent to-[#FF00D4]/18" />
-              </div>
-              <div className="absolute -left-4 bottom-6 hidden sm:flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md px-4 py-3 text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
-                <MonitorPlay size={22} weight="duotone" className="text-[#00D2FF]" />
-                <span className="text-sm font-semibold">Daily creative workflow</span>
+                <FloatingImageBadges badges={socialBadges.services} />
               </div>
             </div>
           </div>
