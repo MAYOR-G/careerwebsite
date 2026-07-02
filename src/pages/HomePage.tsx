@@ -8,15 +8,15 @@ import { GalleryGrid } from './GalleryPage';
 const heroVideoUrl = 'https://pub-9f4f9c9b1b3e477aba4991ccfd92f1ae.r2.dev/content%20flow.mp4';
 
 const trustedLogos = [
-  { name: 'Northline', className: 'font-black italic tracking-[-0.06em]' },
-  { name: 'Wayfind', className: 'font-extrabold tracking-[-0.05em]' },
-  { name: 'Southpeak', className: 'font-black tracking-[-0.06em]' },
-  { name: 'Union&Co', className: 'font-serif font-bold italic tracking-[-0.03em]' },
-  { name: 'Crescent', className: 'font-black tracking-[-0.05em]' },
-  { name: 'KiwiHaus', className: 'font-serif font-black tracking-[-0.04em]' },
-  { name: 'Luma Studio', className: 'font-bold italic tracking-[-0.04em]' },
-  { name: 'Chevra', className: 'font-black tracking-[-0.05em]' },
-  { name: 'At Home', className: 'font-semibold tracking-[-0.03em]' },
+  { name: 'Northline', className: 'font-black italic tracking-[-0.06em] text-[#3A5B7C]/80' },
+  { name: 'Wayfind', className: 'font-extrabold tracking-[-0.05em] text-[#4A7C59]/80' },
+  { name: 'Southpeak', className: 'font-black tracking-[-0.06em] text-[#514A7C]/80' },
+  { name: 'Union&Co', className: 'font-serif font-bold italic tracking-[-0.03em] text-[#7C4A54]/80' },
+  { name: 'Crescent', className: 'font-black tracking-[-0.05em] text-[#6A4A7C]/80' },
+  { name: 'KiwiHaus', className: 'font-serif font-black tracking-[-0.04em] text-[#3E7470]/80' },
+  { name: 'Luma Studio', className: 'font-bold italic tracking-[-0.04em] text-[#4A6D7C]/80' },
+  { name: 'Chevra', className: 'font-black tracking-[-0.05em] text-[#7C4A73]/80' },
+  { name: 'At Home', className: 'font-semibold tracking-[-0.03em] text-[#7C634A]/80' },
 ];
 
 const solutionItems = [
@@ -133,7 +133,7 @@ export default function HomePage() {
             animate="visible"
             className="w-full max-w-4xl flex flex-col items-center text-center"
           >
-            <motion.div variants={fadeUpVariants} className="logo-blend-text mb-5 text-sm font-extrabold tracking-[0.08em] drop-shadow-[0_3px_18px_rgba(0,0,0,0.42)] sm:text-base md:text-lg">
+            <motion.div variants={fadeUpVariants} className="mb-5 text-sm font-extrabold tracking-[0.08em] text-white sm:text-base md:text-lg">
               Uninterrupted 30 Days Of Social Media Schedule
             </motion.div>
             <motion.h1 variants={fadeUpVariants} className="text-5xl md:text-7xl lg:text-[88px] font-extrabold tracking-[-0.04em] text-white leading-[1.05] mb-8 text-balance">
@@ -184,7 +184,7 @@ export default function HomePage() {
             {[...trustedLogos, ...trustedLogos].map((logo, index) => (
               <span
                 key={`${logo.name}-${index}`}
-                className={`shrink-0 text-2xl leading-none text-[#1A1A1A]/72 grayscale md:text-4xl ${logo.className}`}
+                className={`shrink-0 text-2xl leading-none md:text-4xl ${logo.className}`}
               >
                 {logo.name}
               </span>
