@@ -25,9 +25,21 @@ function ServicesMediaStrip() {
 
 export default function ServicesPage() {
   const services = [
-    { title: 'Content Creation Schedule', icon: <Calendar size={32} weight="duotone" className="text-[#28C7F7]" /> },
-    { title: 'Digital Marketing', icon: <TrendUp size={32} weight="duotone" className="text-[#7A2CF3]" /> },
-    { title: 'Video Editing', icon: <VideoCamera size={32} weight="duotone" className="text-[#4F6EF7]" /> },
+    {
+      title: 'Content Creation Schedule',
+      desc: 'A clear monthly content plan with posting cadence, captions, hashtags, and scheduling support across your priority platforms.',
+      icon: <Calendar size={32} weight="duotone" className="text-[#005BFF]" />
+    },
+    {
+      title: 'Digital Marketing',
+      desc: 'Campaign planning, audience targeting, platform growth support, and conversion-focused messaging for organic and paid channels.',
+      icon: <TrendUp size={32} weight="duotone" className="text-[#A100FF]" />
+    },
+    {
+      title: 'Video Editing',
+      desc: 'Short-form edits built for retention, clarity, and platform-native performance on Reels, TikTok, Shorts, and more.',
+      icon: <VideoCamera size={32} weight="duotone" className="text-[#FF00D4]" />
+    },
   ];
 
   const platforms = [
@@ -42,15 +54,15 @@ export default function ServicesPage() {
   return (
     <div className="w-full bg-white min-h-screen">
       <section className="relative pt-36 md:pt-40 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(0,194,255,0.12),transparent_28%),radial-gradient(circle_at_86%_24%,rgba(122,44,243,0.10),transparent_25%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(0,210,255,0.13),transparent_28%),radial-gradient(circle_at_86%_24%,rgba(255,0,212,0.11),transparent_25%)] pointer-events-none" />
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center lg:text-left">
               <h1 className="text-5xl md:text-7xl lg:text-[80px] font-extrabold tracking-[-0.04em] text-[#1A1A1A] leading-[1.05] mb-6 text-balance">
-                Services built for daily content momentum.
+                Social media services built for consistent growth.
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                This website is about 30 days social media content creation and video creations.
+                We plan, create, edit, schedule, and support content that helps your brand stay visible and turn attention into action.
               </p>
             </motion.div>
 
@@ -61,7 +73,7 @@ export default function ServicesPage() {
                   alt="Team planning social media content on a laptop"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#4C1D95]/26 via-transparent to-[#00C2FF]/18" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#3A00FF]/26 via-transparent to-[#FF00D4]/16" />
               </div>
               <motion.div
                 animate={{ y: [0, -10, 0] }}
@@ -76,7 +88,7 @@ export default function ServicesPage() {
                 transition={{ duration: 6.2, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
                 className="hidden sm:flex absolute -right-4 bottom-10 items-center gap-2 rounded-2xl bg-white/90 backdrop-blur-md border border-white/70 px-4 py-3 shadow-[0_18px_40px_rgba(0,0,0,0.10)]"
               >
-                <ChartLineUp size={22} weight="duotone" className="text-[#00C2FF]" />
+                <ChartLineUp size={22} weight="duotone" className="text-[#3A00FF]" />
                 <span className="text-sm font-semibold text-[#1A1A1A]">Growth signals</span>
               </motion.div>
             </motion.div>
@@ -93,12 +105,13 @@ export default function ServicesPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-[#F5F7FB] border border-gray-100 p-8 rounded-2xl flex flex-col items-center justify-center text-center min-h-[190px] hover:shadow-[0_18px_45px_rgba(15,23,42,0.07)] hover:-translate-y-1 transition-all duration-300"
+              className="bg-[#F6F8FF] border border-gray-100 p-8 rounded-2xl flex flex-col items-center justify-center text-center min-h-[250px] hover:shadow-[0_18px_45px_rgba(58,0,255,0.08)] hover:-translate-y-1 transition-all duration-300"
             >
               <div className="mb-4 bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-sm">
                 {service.icon}
               </div>
               <h3 className="text-xl font-bold text-[#1F2937]">{service.title}</h3>
+              <p className="mt-4 text-sm leading-relaxed text-gray-600">{service.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -112,7 +125,7 @@ export default function ServicesPage() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-7">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-[#1F2937] tracking-tight">Platforms Managed</h2>
-              <p className="text-gray-500 mt-2">Multi-platform publishing, creative, and optimisation in one clear workflow.</p>
+              <p className="text-gray-500 mt-2">Multi-platform publishing, creative production, scheduling, and optimisation in one clear workflow.</p>
             </div>
           </div>
           <div className="flex flex-nowrap md:justify-between gap-3 overflow-x-auto pb-2 -mx-6 px-6 md:mx-0 md:px-0 md:overflow-visible">

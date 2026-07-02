@@ -63,13 +63,13 @@ export default function PricingPage() {
   return (
     <div className="w-full bg-white min-h-screen">
       <section className="relative pt-36 md:pt-40 pb-12 px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(0,194,255,0.12),transparent_28%),radial-gradient(circle_at_88%_8%,rgba(76,29,149,0.10),transparent_25%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(0,210,255,0.13),transparent_28%),radial-gradient(circle_at_88%_8%,rgba(255,0,212,0.11),transparent_25%)] pointer-events-none" />
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-[-0.04em] text-[#1A1A1A] leading-[1.05] mb-6 text-center text-balance">
-            Pricing Packages
+            Pricing
           </h1>
           <p className="text-xl text-gray-600 text-center leading-relaxed">
-            Choose the same growth tier from our homepage, with clearer package detail for comparison.
+            Choose the plan that matches your content growth goals.
           </p>
         </motion.div>
       </section>
@@ -85,19 +85,19 @@ export default function PricingPage() {
               transition={{ delay: index * 0.1 }}
               className={`bg-white rounded-[28px] p-8 lg:p-9 relative flex flex-col min-h-[600px] transition-all duration-300 ${
                 plan.popular 
-                  ? 'border-2 border-[#00C2FF] shadow-[0_28px_70px_rgba(0,194,255,0.16)] xl:-translate-y-3' 
-                  : 'border border-gray-200 shadow-[0_14px_40px_rgba(15,23,42,0.05)] hover:border-[#00C2FF]/35 hover:shadow-[0_22px_55px_rgba(15,23,42,0.08)]'
+                  ? 'border-2 border-transparent logo-blend-border shadow-[0_28px_70px_rgba(58,0,255,0.16)] xl:-translate-y-3' 
+                  : 'border border-gray-200 shadow-[0_14px_40px_rgba(15,23,42,0.05)] hover:border-[#A100FF]/35 hover:shadow-[0_22px_55px_rgba(15,23,42,0.08)]'
               }`}
             >
               {plan.popular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#00C2FF] text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-[0.14em] shadow-md whitespace-nowrap">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 logo-blend-bg text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-[0.14em] shadow-md whitespace-nowrap">
                   MOST POPULAR
                 </div>
               )}
               
               <div className="min-h-[72px]">
                 <h3 className="text-2xl font-bold text-[#1F2937] mb-3 leading-tight">{plan.name}</h3>
-                <p className="inline-flex rounded-full bg-[#00C2FF]/10 px-3 py-1 text-xs font-bold text-[#008FC0]">
+                <p className="inline-flex rounded-full bg-[#A100FF]/10 px-3 py-1 text-xs font-bold text-[#3A00FF]">
                   50% off for the first three months
                 </p>
               </div>
@@ -110,7 +110,7 @@ export default function PricingPage() {
               <ul className="space-y-4 mb-9 flex-1">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <CheckCircle size={20} weight="fill" className="text-[#28C7F7] shrink-0 mt-0.5" />
+                    <CheckCircle size={20} weight="fill" className="text-[#3A00FF] shrink-0 mt-0.5" />
                     <span className="text-gray-600 text-sm leading-snug">{feature}</span>
                   </li>
                 ))}

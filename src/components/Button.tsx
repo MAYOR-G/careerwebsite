@@ -16,13 +16,13 @@ interface ButtonProps extends HTMLMotionProps<'button'> {
 }
 
 export default function Button({ children, variant = 'primary', size = 'md', className, ...props }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00C2FF]';
+  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3A00FF]';
   
   const variants = {
-    primary: 'bg-[#00C2FF] text-white hover:bg-[#009BCC] shadow-[0_4px_14px_rgba(0,194,255,0.3)] hover:shadow-[0_6px_20px_rgba(0,194,255,0.4)]',
-    secondary: 'bg-[#1A1A1A] text-white hover:bg-black',
-    outline: 'bg-transparent text-[#1A1A1A] border border-gray-200 hover:border-gray-300 hover:bg-gray-50',
-    ghost: 'bg-transparent text-[#1A1A1A] hover:bg-gray-50',
+    primary: 'logo-blend-bg text-white shadow-[0_14px_34px_rgba(58,0,255,0.25)] hover:shadow-[0_18px_42px_rgba(255,0,212,0.24)]',
+    secondary: 'bg-[#070817] text-white hover:bg-[#111827]',
+    outline: 'bg-white text-[#111827] border border-gray-200 hover:border-[#A100FF]/35 hover:bg-[#F6F8FF]',
+    ghost: 'bg-transparent text-[#111827] hover:bg-[#F6F8FF]',
   };
 
   const sizes = {

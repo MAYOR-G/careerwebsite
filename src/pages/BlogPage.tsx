@@ -26,7 +26,7 @@ export default function BlogPage() {
       >
         <Link 
           to="/" 
-          className="bg-[#1A1A1A] text-white px-8 py-4 rounded-full font-medium hover:bg-[#00C2FF] transition-colors inline-block"
+          className="logo-blend-bg text-white px-8 py-4 rounded-full font-semibold transition-transform hover:scale-[1.02] inline-block"
         >
           Return Home
         </Link>

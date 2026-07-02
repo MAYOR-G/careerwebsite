@@ -16,10 +16,10 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="w-full bg-white selection:bg-[#00C2FF] selection:text-white pt-24 md:pt-28 pb-16">
+    <div className="w-full bg-white selection:bg-[#3A00FF] selection:text-white pt-24 md:pt-28 pb-16">
       {/* Hero Section */}
       <section className="relative pt-16 md:pt-20 pb-20 md:pb-24 overflow-hidden border-b border-gray-100">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(0,194,255,0.10),transparent_28%),radial-gradient(circle_at_88%_12%,rgba(76,29,149,0.10),transparent_26%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(0,210,255,0.12),transparent_28%),radial-gradient(circle_at_88%_12%,rgba(255,0,212,0.11),transparent_26%)] pointer-events-none" />
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <motion.div 
             variants={staggerVariants}
@@ -29,10 +29,10 @@ export default function AboutPage() {
           >
             <div className="text-center lg:text-left">
               <motion.h1 variants={fadeUpVariants} className="text-5xl md:text-7xl lg:text-[80px] font-extrabold tracking-[-0.04em] text-[#1A1A1A] leading-[1.05] mb-7 text-balance">
-                We engineer <span className="relative inline-block text-[#00C2FF]">attention.<svg className="absolute w-full h-3 -bottom-1 left-0 text-[#00C2FF]/20" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" strokeLinecap="round"/></svg></span>
+                We build content systems that <span className="logo-blend-text">grow brands.</span>
               </motion.h1>
               <motion.p variants={fadeUpVariants} className="text-xl md:text-2xl text-gray-600 leading-relaxed font-medium max-w-2xl mx-auto lg:mx-0">
-                We're not just content creators. We are growth architects obsessed with turning views into verifiable revenue for modern brands.
+                CONTENTFLOW MEDIA helps businesses plan, create, edit, and publish social media content with a clearer strategy behind every post.
               </motion.p>
             </div>
 
@@ -43,7 +43,7 @@ export default function AboutPage() {
                   alt="Social media strategy dashboard and content planning"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#4C1D95]/24 via-transparent to-[#00C2FF]/18" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#3A00FF]/24 via-transparent to-[#FF00D4]/14" />
               </div>
               <motion.div
                 animate={{ y: [0, -10, 0] }}
@@ -101,18 +101,15 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="w-full lg:w-1/2 flex flex-col justify-center"
             >
-              <h2 className="text-sm font-bold text-[#00C2FF] tracking-[0.1em] uppercase mb-4">Our Mission</h2>
+              <h2 className="section-kicker mb-4">Our Mission</h2>
               <h3 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] tracking-tight mb-8 leading-[1.1]">Bridge the gap between scrolling and buying.</h3>
               
               <div className="space-y-6 text-lg text-gray-500 leading-relaxed">
                 <p>
-                  At <strong className="text-[#1A1A1A]">CONTENTFLOW MEDIA</strong>, we realized that the "old way" of social media management—posting random graphics three times a week—was completely broken. It generates zero engagement, zero leads, and wastes your marketing budget.
+                  At <strong className="text-[#1A1A1A]">CONTENTFLOW MEDIA</strong>, we help businesses grow their brand through professional social media management, creative content creation, video editing, and digital marketing. We manage TikTok, Instagram, Facebook, YouTube, X (Twitter), and Pinterest, creating engaging content that increases brand awareness, attracts customers, and supports business growth.
                 </p>
                 <p>
-                  We built this agency to change that. We specialize in high-retention short-form video, aggressive multi-platform distribution, and conversion-focused funnels. 
-                </p>
-                <p>
-                  Whether it's TikTok, Instagram Reels, YouTube Shorts, or LinkedIn, we create the kind of content that algorithms love and customers actually want to watch. We don't just build audiences; we build businesses.
+                  From content strategy and video production to publishing, digital marketing, and performance tracking, we provide complete solutions that help businesses build a strong online presence and connect with the right audience. Our mission is to deliver creative, results-driven marketing that helps your business grow with confidence.
                 </p>
               </div>
             </motion.div>
@@ -121,8 +118,8 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="py-32 bg-[#4C1D95] text-white overflow-hidden relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00C2FF] rounded-full blur-[200px] opacity-[0.08] pointer-events-none" />
+      <section className="py-32 bg-[#070817] text-white overflow-hidden relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(0,210,255,0.18),transparent_28%),radial-gradient(circle_at_82%_24%,rgba(255,0,212,0.16),transparent_30%)] pointer-events-none" />
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Our Core Values</h2>
@@ -144,7 +141,7 @@ export default function AboutPage() {
                 transition={{ delay: i * 0.1 }}
                 className="bg-transparent border border-white/10 rounded-[24px] p-10 hover:border-white/40 hover:bg-white/[0.03] transition-all duration-300"
               >
-                <div className="text-[#00C2FF] mb-6">{value.icon}</div>
+                <div className="text-[#00D2FF] mb-6">{value.icon}</div>
                 <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
                 <p className="text-white/70 leading-relaxed">{value.desc}</p>
               </motion.div>

@@ -5,6 +5,7 @@ import { List, X } from '@phosphor-icons/react';
 import Button from '../components/Button';
 
 const navLinks = [
+  { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
   { name: 'Pricing', path: '/pricing' },
@@ -16,6 +17,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isHeroTop = location.pathname === '/' && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,15 +30,15 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'bg-white/86 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.05)] py-2' 
-          : 'bg-white/10 backdrop-blur-[2px] py-2.5'
+        isHeroTop
+          ? 'bg-transparent py-2.5'
+          : 'bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(17,24,39,0.06)] py-2'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex justify-between items-center min-h-[58px]">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex justify-between items-center min-h-[60px]">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 relative z-50">
-          <img src="/logo-transparent.png" alt="CONTENTFLOW MEDIA" className="h-12 sm:h-14 md:h-16 w-auto object-contain origin-left" />
+          <img src="/logo-official.png" alt="CONTENTFLOW MEDIA" className="h-[52px] sm:h-[60px] md:h-[68px] w-auto object-contain origin-left drop-shadow-[0_2px_10px_rgba(255,255,255,0.45)]" />
         </Link>
 
         {/* Desktop Nav */}
@@ -45,8 +47,10 @@ export default function Header() {
             <Link
               key={link.name}
               to={link.path}
-              className={`text-[15px] font-medium transition-colors hover:text-[#00C2FF] ${
-                location.pathname === link.path ? 'text-[#00C2FF]' : 'text-[#1A1A1A]'
+              className={`text-[15px] font-semibold transition-colors ${
+                location.pathname === link.path
+                  ? isHeroTop ? 'text-white' : 'logo-blend-text'
+                  : isHeroTop ? 'text-white/92 hover:text-white' : 'text-[#111827] hover:text-[#3A00FF]'
               }`}
             >
               {link.name}
@@ -65,7 +69,7 @@ export default function Header() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden relative z-50 p-2 text-[#1A1A1A]"
+          className={`lg:hidden relative z-50 p-2 ${isHeroTop ? 'text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]' : 'text-[#111827]'}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
         >
@@ -81,7 +85,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 w-full h-[100dvh] bg-white/90 backdrop-blur-xl z-40 flex flex-col items-center justify-center px-6"
+            className="fixed inset-0 w-full h-[100dvh] bg-white/94 backdrop-blur-xl z-40 flex flex-col items-center justify-center px-6"
           >
             <div className="flex flex-col items-center gap-8 w-full">
               {navLinks.map((link, index) => (
@@ -95,7 +99,7 @@ export default function Header() {
                     to={link.path}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`text-3xl font-bold tracking-tight transition-colors ${
-                      location.pathname === link.path ? 'text-[#00C2FF]' : 'text-[#1A1A1A] hover:text-[#00C2FF]'
+                      location.pathname === link.path ? 'logo-blend-text' : 'text-[#111827] hover:text-[#3A00FF]'
                     }`}
                   >
                     {link.name}

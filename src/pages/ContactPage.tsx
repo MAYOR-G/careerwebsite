@@ -4,11 +4,10 @@ import Button from '../components/Button';
 
 export default function ContactPage() {
   return (
-    <div className="w-full bg-white selection:bg-[#7A2CF3] selection:text-white pt-24 min-h-screen flex flex-col">
+    <div className="w-full bg-white selection:bg-[#3A00FF] selection:text-white pt-24 min-h-screen flex flex-col">
       <section className="flex-1 relative overflow-hidden">
         {/* Background Gradients */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#28C7F7]/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#7A2CF3]/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_12%,rgba(0,210,255,0.13),transparent_28%),radial-gradient(circle_at_10%_88%,rgba(255,0,212,0.10),transparent_30%)] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
@@ -21,7 +20,7 @@ export default function ContactPage() {
               className="flex flex-col justify-center"
             >
               <h1 className="text-5xl md:text-6xl font-bold text-[#1F2937] tracking-tight mb-6">
-                Let's scale your <br/><span className="text-transparent bg-clip-text bg-gradient-brand">brand.</span>
+                Let's scale your <br/><span className="logo-blend-text">brand.</span>
               </h1>
               <p className="text-xl text-gray-600 mb-12 leading-relaxed max-w-lg">
                 Book a free strategy session. We'll audit your current social media, identify the leaks in your funnel, and show you exactly how we can fix them.
@@ -29,7 +28,7 @@ export default function ContactPage() {
 
               <div className="space-y-6 mb-12">
                 <div className="flex items-center gap-4 text-gray-700">
-                  <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-[#28C7F7]">
+                  <div className="w-12 h-12 rounded-full bg-[#F0F3FF] flex items-center justify-center text-[#005BFF]">
                     <EnvelopeSimple size={24} weight="duotone" />
                   </div>
                   <div>
@@ -38,7 +37,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 text-gray-700">
-                  <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-[#7A2CF3]">
+                  <div className="w-12 h-12 rounded-full bg-[#F7E9FF] flex items-center justify-center text-[#A100FF]">
                     <Phone size={24} weight="duotone" />
                   </div>
                   <div>
@@ -47,7 +46,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 text-gray-700">
-                  <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-[#28C7F7]">
+                  <div className="w-12 h-12 rounded-full bg-[#F0F3FF] flex items-center justify-center text-[#3A00FF]">
                     <MapPin size={24} weight="duotone" />
                   </div>
                   <div>
@@ -59,9 +58,9 @@ export default function ContactPage() {
 
               {/* Social Proof */}
               <div className="bg-[#1F2937] text-white p-6 rounded-2xl shadow-xl max-w-md relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-brand opacity-20 blur-2xl" />
+                <div className="absolute top-0 right-0 w-32 h-32 logo-blend-bg opacity-20 blur-2xl" />
                 <div className="flex items-start gap-4 relative z-10">
-                  <CheckCircle size={32} weight="fill" className="text-[#28C7F7] shrink-0" />
+                  <CheckCircle size={32} weight="fill" className="text-[#00D2FF] shrink-0" />
                   <div>
                     <h4 className="font-bold mb-1">No commitment required.</h4>
                     <p className="text-sm text-gray-400">If we don't think we can help you grow, we'll tell you upfront and point you in the right direction.</p>
@@ -85,7 +84,7 @@ export default function ContactPage() {
                       <input 
                         type="text" 
                         id="firstName" 
-                        className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#7A2CF3]/50 focus:border-[#7A2CF3] transition-all bg-gray-50/50 hover:bg-gray-50"
+                        className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3A00FF]/35 focus:border-[#3A00FF] transition-all bg-gray-50/50 hover:bg-gray-50"
                         placeholder="John"
                       />
                     </div>
@@ -94,7 +93,7 @@ export default function ContactPage() {
                       <input 
                         type="text" 
                         id="lastName" 
-                        className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#7A2CF3]/50 focus:border-[#7A2CF3] transition-all bg-gray-50/50 hover:bg-gray-50"
+                        className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3A00FF]/35 focus:border-[#3A00FF] transition-all bg-gray-50/50 hover:bg-gray-50"
                         placeholder="Doe"
                       />
                     </div>
@@ -105,7 +104,7 @@ export default function ContactPage() {
                     <input 
                       type="email" 
                       id="email" 
-                      className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#7A2CF3]/50 focus:border-[#7A2CF3] transition-all bg-gray-50/50 hover:bg-gray-50"
+                      className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3A00FF]/35 focus:border-[#3A00FF] transition-all bg-gray-50/50 hover:bg-gray-50"
                       placeholder="john@company.com"
                     />
                   </div>
@@ -115,13 +114,13 @@ export default function ContactPage() {
                     <textarea 
                       id="business" 
                       rows={4}
-                      className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#7A2CF3]/50 focus:border-[#7A2CF3] transition-all bg-gray-50/50 hover:bg-gray-50 resize-none"
+                      className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3A00FF]/35 focus:border-[#3A00FF] transition-all bg-gray-50/50 hover:bg-gray-50 resize-none"
                       placeholder="What do you do? What are your current bottlenecks?"
                     />
                   </div>
 
                   <div className="pt-2">
-                  <Button variant="primary" className="w-full py-4 text-lg mt-4 shadow-xl shadow-[#00C2FF]/20">
+                  <Button variant="primary" className="w-full py-4 text-lg mt-4">
                     Send Message
                   </Button>
                   <p className="text-center text-xs text-gray-500 mt-4">
