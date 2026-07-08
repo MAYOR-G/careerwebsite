@@ -9,6 +9,7 @@ import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
 import BlogPage from './pages/BlogPage';
 import { AnimatePresence } from 'motion/react';
+import SeoManager from './components/SeoManager';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <>
+      <SeoManager />
       <ScrollToTop />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
