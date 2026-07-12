@@ -2,13 +2,13 @@
 > UK social media content agency helping businesses plan, create, edit, schedule, and optimise content across TikTok, Instagram, Facebook, YouTube, X, and Pinterest.
 
 ## Key pages
-- [Home](https://contentflowmedia.co.uk/): Overview of ContentFlow Media's social media management, content creation, digital marketing, video editing, and daily posting offer.
-- [About](https://contentflowmedia.co.uk/about): Company mission, values, and approach to building content systems that grow brands.
-- [Services](https://contentflowmedia.co.uk/services): Details of content creation schedules, digital marketing support, video editing, managed platforms, publishing, and optimisation.
-- [Pricing](https://contentflowmedia.co.uk/pricing): Social media growth packages for different monthly content and platform needs.
-- [Gallery](https://contentflowmedia.co.uk/gallery): Creative work and content examples.
-- [Blog](https://contentflowmedia.co.uk/blog): Social media growth insights and content strategy resources.
-- [Contact](https://contentflowmedia.co.uk/contact): Book a free strategy session with ContentFlow Media.
+- [Home](https://www.contentflowmedia.co.uk/): Overview of ContentFlow Media's social media management, content creation, digital marketing, video editing, and daily posting offer.
+- [About](https://www.contentflowmedia.co.uk/about): Company mission, values, and approach to building content systems that grow brands.
+- [Services](https://www.contentflowmedia.co.uk/services): Details of content creation schedules, digital marketing support, video editing, managed platforms, publishing, and optimisation.
+- [Pricing](https://www.contentflowmedia.co.uk/pricing): Social media growth packages for different monthly content and platform needs.
+- [Gallery](https://www.contentflowmedia.co.uk/gallery): Creative work and content examples.
+- [Blog](https://www.contentflowmedia.co.uk/blog): Social media growth insights and content strategy resources.
+- [Contact](https://www.contentflowmedia.co.uk/contact): Book a free strategy session with ContentFlow Media.
 
 ## Services
 - Social media management
@@ -22,7 +22,7 @@
 - Brand: ContentFlow Media
 - Location: London, United Kingdom
 - Service area: United Kingdom
-- Contact page: https://contentflowmedia.co.uk/contact
+- Contact page: https://www.contentflowmedia.co.uk/contact
 - Primary audience: growing businesses that need consistent content, stronger engagement, and clearer social media strategy
 
 ## AI usage guidance

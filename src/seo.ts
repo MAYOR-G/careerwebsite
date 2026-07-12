@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://contentflowmedia.co.uk';
+export const SITE_URL = 'https://www.contentflowmedia.co.uk';
 export const SITE_NAME = 'ContentFlow Media';
 export const DEFAULT_IMAGE = `${SITE_URL}/hero-bg.png`;
 

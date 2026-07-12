@@ -16,4 +16,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://contentflowmedia.co.uk/sitemap.xml
+Sitemap: https://www.contentflowmedia.co.uk/sitemap.xml
